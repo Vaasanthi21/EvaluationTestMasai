@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domino's Pizza Layout</title>
+    <style>
+        /* General Reset and Base Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        h1, h2, h3, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* --- Navbar Section (Flexbox) --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar > div {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            font-weight: bold;
+            font-size: 24px;
+            color: #E2262B; /* Domino's Red */
+            margin-right: 40px;
+        }
+
+        .navbar .links p {
+            margin-right: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #666;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .navbar .links p:hover {
+            color: #E2262B;
+            border-bottom: 2px solid #E2262B;
+        }
+
+        .navbar .download-btn {
+            background-color: #E2262B;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        /* --- Top Section (Grid) --- */
+        .top-section {
+            padding: 40px 0;
+        }
+
+        .top-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .top-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .top-cards > div {
+            background-color: #E2262B;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .top-cards > div img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            align-self: flex-start;
+        }
+
+        .top-cards > div h3 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .top-cards > div p {
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .top-cards > div button {
+            background-color: white;
+            color: #E2262B;
+            border: none;
+            padding: 10px 25px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            align-self: center;
+            margin-top: auto;
+        }
+
+        /* --- Mid Section (Grid) --- */
+        .mid-section {
+            padding: 40px 0;
+        }
+
+        .mid-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .mid-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .mid-cards > div {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .mid-cards > div .mid-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 15px;
+            background-color: #f0f0f0;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #E2262B;
+        }
+
+        .mid-cards > div h3 {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .mid-cards > div p {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .mid-cards > div a {
+            color: #E2262B;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+            border: 1px solid #E2262B;
+            padding: 5px 15px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        /* --- Bottom Section (Flexbox) --- */
+        .bottom-section {
+            background-color: white;
+            padding: 40px 0;
+        }
+
+        .bottom-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            justify-content: space-between;
+        }
+
+        .bottom-content .app-images {
+            display: flex;
+            gap: 15px;
+        }
+
+        .bottom-content .app-images img {
+            width: 150px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .bottom-content .text-and-links {
+            flex-grow: 1;
+        }
+
+        .bottom-content .text-and-links h1 {
+            font-size: 32px;
+            color: #E2262B;
+            margin-bottom: 10px;
+        }
+
+        .bottom-content .text-and-links p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .bottom-content .store-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .bottom-content .store-links img {
+            width: 150px;
+            height: auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar container">
+        <div class="logo-links">
+            <div class="logo">Domino's Pizza</div>
+            <div class="links">
+                <p>OUR MENU</p>
+                <p>DOMINO'S STORES</p>
+                <p>GIFT CARD</p>
+                <p>CORPORATE ENQUIRY</p>
+                <p>CONTACT</p>
+            </div>
+        </div>
+        <div>
+            <a href="#" class="download-btn">Download App</a>
+        </div>
+    </header>
+
+    <section class="top-section container">
+        <h2>Order</h2>
+        <div class="top-cards">
+            <div>
+                <img src="[attachment_0](attachment)" alt="Veg Pizza" title="Top-card Image">
+                <h3>VEG PIZZA</h3>
+                <p>A delight for veggie lovers! Choose from our wide range of delicious vegetarian pizzas, it's softer and tastier.</p>
+                <button>VIEW ALL</button>
+            </div>
+            <div>
+                <img src="[attachment_1](attachment)" alt="Non-Veg Pizza" title="Top-card Image">
+                <h3>NON-VEG PIZZA</h3>
+                <p>Choose your favourite non-veg pizzas from the Domino's Pizza menu. Get fresh non-veg pizza with your choice of crusts & toppings.</p>
+                <button>VIEW ALL</button>
+            </div>
+            <div>
+                <img src="[attachment_1](attachment)" alt="Pizza Mania" title="Top-card Image">
+                <h3>PIZZA MANIA</h3>
+                <p>Indulge into mouth-watering taste of Pizza mania range, perfect answer to all your food cravings.</p>
+                <button>VIEW ALL</button>
+            </div>
+            <div>
+                <img src="[attachment_1](attachment)" alt="Sides & Beverages" title="Top-card Image">
+                <h3>SIDES & BEVERAGES</h3>
+                <p>Complement your pizza with wide range of sides & beverages available at Domino's Pizza India.</p>
+                <button>VIEW ALL</button>
+            </div>
+            <div>
+                <img src="[attachment_0](attachment)" alt="Pasta" title="Top-card Image">
+                <h3>PASTA</h3>
+                <p>Choose your favourite pizza pasta from the Domino's pasta menu. Get fresh non-veg pasta with your choice of sauce.</p>
+                <button>VIEW ALL</button>
+            </div>
+            <div>
+                <img src="[attachment_1](attachment)" alt="Desserts" title="Top-card Image">
+                <h3>DESSERTS</h3>
+                <p>End your meal perfectly with our delicious range of desserts, including Choco Lava Cake and more!</p>
+                <button>VIEW ALL</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="mid-section container">
+        <h2>Explore</h2>
+        <div class="mid-cards">
+            <div>
+                <div class="mid-icon">📜</div>
+                <h3>OUR MENU</h3>
+                <p>Explore our range of delicious Pizzas, delivered in 30 minutes</p>
+                <a href="#">DISCOVER MENU</a>
+            </div>
+            <div>
+                <div class="mid-icon">📍</div>
+                <h3>STORES NEAR ME</h3>
+                <p>Find the nearest Domino's store for quick pickup or delivery</p>
+                <a href="#">LOCATE STORE</a>
+            </div>
+            <div>
+                <div class="mid-icon">🎁</div>
+                <h3>GIFT CARDS</h3>
+                <p>Give the gift of great taste with a Domino's Gift Card</p>
+                <a href="#">BUY NOW</a>
+            </div>
+            <div>
+                <div class="mid-icon">🏢</div>
+                <h3>CORPORATE</h3>
+                <p>Bulk order or corporate tie-up? Contact us for special offers.</p>
+                <a href="#">ENQUIRE NOW</a>
+            </div>
+            <div>
+                <div class="mid-icon">❓</div>
+                <h3>FAQ</h3>
+                <p>Have questions? Find quick answers here.</p>
+                <a href="#">VIEW FAQ</a>
+            </div>
+            <div>
+                <div class="mid-icon">💬</div>
+                <h3>FEEDBACK</h3>
+                <p>Help us serve you better by giving us your valuable feedback.</p>
+                <a href="#">GIVE FEEDBACK</a>
+            </div>
+            <div>
+                <div class="mid-icon">⚖</div>
+                <h3>TERMS & CONDITIONS</h3>
+                <p>Read our usage policy and terms of service.</p>
+                <a href="#">READ MORE</a>
+            </div>
+            <div>
+                <div class="mid-icon">🔒</div>
+                <h3>PRIVACY POLICY</h3>
+                <p>Your data security is important to us.</p>
+                <a href="#">READ MORE</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="bottom-section">
+        <div class="bottom-content container">
+            <div class="app-images">
+                <img src="[attachment_2](attachment)" alt="Domino's App Screen 1" title="App Screen 1">
+                <img src="[attachment_2](attachment)" alt="Domino's App Screen 2" title="App Screen 2">
+            </div>
+            <div class="text-and-links">
+                <h1>Unlock Exclusive Offers</h1>
+                <p>For lightning fast ordering experience download the Domino's app.</p>
+                <div class="store-links">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" title="Google Play Badge">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on the App Store" title="App Store Badge">
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
